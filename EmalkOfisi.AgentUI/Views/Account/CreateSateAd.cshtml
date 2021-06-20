@@ -1,0 +1,69 @@
+﻿@model CreateStateAdViewModel
+@{
+    ViewData["Title"] = "CreateSateAd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 " style="position: relative; margin: auto; ">
+
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="text-danger">@ViewBag.ErrorMessage</div>
+        }
+
+    <form asp-controller="Account" asp-action="CreateSateAd" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group row">
+            <label asp-for="AdName" class="col-md-3 col-form-label"></label>
+            <div class="col-md-9">
+                <input asp-for="AdName" value="@Model.AdName" class="form-control" />
+                <span asp-validation-for="AdName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="SatateAge" class="col-md-3 col-form-label"></label>
+            <div class="col-md-9">
+                <input asp-for="SatateAge" value="@Model.SatateAge" class="form-control" />
+                <span asp-validation-for="SatateAge" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="StateArea" class="col-md-3 col-form-label"></label>
+            <div class="col-md-9">
+                <input asp-for="StateArea" value="@Model.StateArea" class="form-control" />
+                <span asp-validation-for="StateArea" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="RoomCount" class="col-md-3 col-form-label"></label>
+            <div class="col-md-9">
+                <input asp-for="RoomCount" value="@Model.RoomCount" class="form-control" />
+                <span asp-validation-for="RoomCount" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Description" class="col-md-3 col-form-label"></label>
+            <div class="col-md-9">
+                <input asp-for="Description" value="@Model.Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group row">
+            <div class="col-md-7 offset-md-5">
+                <button type="submit" class="btn " style="background-color:navy; color:white;">GÖNDER</button>
+            </div>
+        </div>
+
+    </form>
+
+    </div>
+</div>
+

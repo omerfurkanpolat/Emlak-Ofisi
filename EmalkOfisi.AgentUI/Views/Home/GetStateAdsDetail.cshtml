@@ -1,0 +1,27 @@
+﻿@model StateAdDetailViewModel
+@{
+    ViewData["Title"] = "GetStateAdsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İlan Detayları</h2>
+<hr />
+<h3> @Model.AdName</h3>
+<br />
+<label style="font-weight: bold;"> Firma Adı :</label>
+<label> @Model.AgentCompanyName</label>
+<br />
+<label style="font-weight: bold;"> Binanın Yaşı:</label>
+<label> @Model.SatateAge</label>
+<br />
+<label style="font-weight: bold;"> Diarenin m2'si:</label>
+<label> @Model.StateArea</label>
+<br />
+
+<label style="font-weight: bold;"> Oda Sayısı:</label>
+<label> @Model.RoomCount</label>
+<br />
+<label style="font-weight: bold;"> Açıklama:</label>
+<label> @Model.Description</label>
+
+

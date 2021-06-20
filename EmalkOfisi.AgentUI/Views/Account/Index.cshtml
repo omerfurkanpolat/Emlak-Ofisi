@@ -1,0 +1,49 @@
+﻿@model UserStateAdsListViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İlanlarım</h2>
+<div>
+    <a asp-controller="Account" asp-action="CreateSateAd">
+        <button type="button" class="btn btn-primary">Yeni İlan Oluştur</button>
+    </a>
+</div>
+<hr />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">İlan Adı</th>
+            <th scope="col">Düzenle</th>
+            <th scope="col">Sil</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.StateAds.Count > 0)
+        {
+            @foreach (var item in Model.StateAds)
+            {
+                <tr>
+                    <th scope="row">@item.AdName</th>
+                    <td>
+                        <a asp-controller="Account" asp-action="UpdateSateAd" asp-route-id="@item.StateId">
+                            <button type="button" class="btn btn-secondary">İlanı Güncelle</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Account" asp-action="DeleteSateAd" asp-route-id="@item.StateId">
+                            <button type="button" class="btn btn-danger">İlanı Sil</button>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+        }
+
+
+    </tbody>
+</table>
+

@@ -1,0 +1,132 @@
+﻿@model StateSearchViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>İlanlar</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <form>
+            <h3 class="thead-dark">Arama Kriterlerinizi Girin</h3>
+            <form asp-controller="Home" asp-action="Index" method="get">
+                @*@Html.HiddenFor(m => m.Search, "true");*@
+                <input type="hidden" asp-for="Search" value="true" class="form-control" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group row">
+                    <label asp-for="AddName" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="AddName" value="@Model.AddName" class="form-control" />
+                        <span asp-validation-for="AddName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label asp-for="StateAge" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="StateAge" value="@Model.StateAge" class="form-control" />
+                        <span asp-validation-for="StateAge" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="StateArea" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="StateArea" value="@Model.StateArea" class="form-control" />
+                        <span asp-validation-for="StateArea" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="RoomCount" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="RoomCount" value="@Model.RoomCount" class="form-control" />
+                        <span asp-validation-for="RoomCount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Description" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="Description" value="@Model.Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="AgentCompanyName" class="col-md-3 col-form-label"></label>
+                    <br />
+                    <div class="col-md-9">
+                        <input asp-for="AgentCompanyName" value="@Model.AgentCompanyName" class="form-control" />
+                        <span asp-validation-for="AgentCompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-md-7 offset-md-5">
+                        <button type="submit" class="btn " style="background-color:navy; color:white;">Filtrele</button>
+                    </div>
+                </div>
+
+            </form>
+        </form>
+    </div>
+    <div class="col-md-9">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">İlan Adı</th>
+                    <th scope="col">İlan Sahibi</th>
+                    <th scope="col">Görüntüle</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.StateAds.Count > 0)
+                {
+                    @foreach (var item in Model.StateAds)
+                    {
+                        <tr>
+                            <th scope="row">@item.AdName</th>
+                            <td>
+                                @item.User.AgentCompanyName
+                            </td>
+                            <td>
+                                <a asp-controller="Home" asp-action="GetStateAdsDetail" asp-route-id="@item.StateId">
+                                    <button type="button" class="btn btn-danger">Görüntüle</button>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr>
+                        <td>
+                            @if (Model.Search)
+                            {
+                                <p>Aradığınız kriterlere uygun ilan bulunamamıştır</p>
+                            }
+                            else
+                            {
+                                <p>Henüz bir ilan bulunmamaktadır.</p>
+                            }
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
